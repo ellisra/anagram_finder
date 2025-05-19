@@ -2,8 +2,8 @@
 ## Problem Statement
 Enclosed is a text file named “words”, with each line containing a single word. Your assignment is to develop a compact program that identifies all words in the list that have one or more anagrams.
 
-Not all words have an anagram
-We are only interested in single-word-anagrams
+- Not all words have an anagram
+- We are only interested in single-word-anagrams
 
 An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once. (https://en.wikipedia.org/wiki/Anagram)
 
@@ -23,6 +23,17 @@ The purpose of this task is to understand how you solve logical problems using p
 
 During the technical interview you will be asked to present the solution which will form the basis for a part of the conversation.
 
-## Plan
-- I essentially just need to iterate over the list of words and check if there is more than one instance of that set of characters in the list, if there is then I need to assign those instances to a dictionary
-- I think the easiest way to do this would be to use the indexes of the words, i.e. the word "example" at index 22 has matches at index 35 & 24, the words at these indexes would then be added as values to the key of "example"
+## Usage
+> [!NOTE]
+> I used `uv` to manage this project, but as no external dependencies were used it is not necessary for running the script.
+
+1. Clone the repository and enter the directory
+```bash
+git clone git@github.com:ellisra/anagram_finder.git && cd anagram_finder
+```
+2. Ensure that `words.txt` is in the root directory of the project
+3. Run the script
+```bash
+python3 detect_anagrams.py
+```
+The results will be printed to the terminal as well as being saved in a file named `output.json`.
