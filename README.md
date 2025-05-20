@@ -37,3 +37,37 @@ git clone git@github.com:ellisra/anagram_finder.git && cd anagram_finder
 python3 detect_anagrams.py
 ```
 The results will be printed to the terminal as well as being saved in a file named `output.json`.
+
+## How it Works
+The core of this solution is the use of canonical form to represent words. This way we sort the letters of all words alphabetically, allowing us to easily compare these canonical forms in order to determine if they are anagrams. To provide a better understanding of the solution I will explain the steps taken with a simple sample of words.
+
+### Example
+1. We start with a list of words read from `words.txt`, here is a smaller example list:
+```python
+words = ["bat", "race", "bird", "bride", "arc", "tab", "free", "acre", "care"]
+```
+2. We then sort their letters alphabetically and create a dictionary with these canonical forms being the keys and their matching words being the values:
+```python
+anagram_groups = {
+    "abt":   ["bat",  "tab"],
+    "acer":  ["race", "acre", "care"],
+    "bdir":  ["bird"],
+    "bdeir": ["bride"],
+    "acr":   ["arc"],
+    "eefr":  ["free"]
+}
+```
+3. We can then create a new dictionary containing the original words as keys and words which match their canonical form (excluding themselves) as values:
+```python
+words_dict = {
+    "bat":   ["tab"],
+    "race":  ["acre", "care"],
+    "bird":  [],
+    "bride": [],
+    "arc":   [],
+    "tab":   ["bat"],
+    "free":  [],
+    "acre":  ["race", "care"],
+    "care":  ["race", "acre"],
+}
+```
